@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+
+  "name": "Dankmaster",
+  "description": "This extension messes with people",
+  "version": "1.0",
+
+  "background": {
+    "scripts": ["dankscript.js"],
+    "persistent": false
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.facebook.com/*"],
+      "js": ["dankscript.js"]
+
+    }
+  ],
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    //"default_popup": "popup.html",
+    "default_title": "Dankmaster"
+  },
+  "permissions": [
+    "activeTab"
+    
+  ]
+}
