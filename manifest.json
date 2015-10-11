@@ -7,27 +7,27 @@
 
   "background": {
     "scripts": ["dankscript.js"],
-    "persistent": true
+    "persistent": false
   },
 
   "content_scripts": [
     {
-      
-      "matches": ["https://www.facebook.com/*"],
-      "js": ["dankscript.js"],
-      "run_at": "document_idle",
-      "all_frames": true
+      "matches": ["https://*/*"],
+      "js": ["dankscript.js", "background.js"]
 
     }
   ],
 
+/*
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html",
     "default_title": "Dankmaster"
   },
   
+*/
   "permissions": [
-    "activeTab", "tabs", "<all_urls>"
+    "activeTab"
+    
   ]
 }
