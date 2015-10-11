@@ -1,5 +1,7 @@
+console.log('calleddankscript');
 
 function replaceTextOnPage(from, to){
+  console.log('calledReplaceText'+from + to);
   getAllTextNodes().forEach(function(node){
     node.nodeValue = node.nodeValue.replace(new RegExp(quote(from), 'g'), to);
   });
@@ -23,4 +25,40 @@ function replaceTextOnPage(from, to){
   }
 }
 
-replaceTextOnPage('e', 'DANK MEMES');
+function dankReplace() { 
+  console.log(document.getElementById('input'));
+  var search = document.getElementById('input').value;
+  var repl = document.getElementById('rplc').value;
+  replaceTextOnPage(search, repl);
+  location.reload();
+  console.log("Search: " + search + ", Repl: " + repl); 
+  return false; 
+}
+/*
+document.addEventListener('load', function(){
+  console.log('load happened');
+  document.getElementById('subby').addEventListener('click', dankReplace);
+});
+*/
+
+chrome.tabs.onUpdated.addListener(function() {
+  chrome.tabs.executeScript(null,{ code:"replaceTextOnPage('Chiang', 'BOYU')"});
+});
+
+console.log("Reached 1");
+//dankReplace();
+document.getElementById('subby').addEventListener('click', dankReplace);
+
+
+//This is tied to the run_at in manifest and to background
+//window.addEventListener("load", function(){replaceTextOnPage('Kevin', 'ANDREW');}, false)
+
+/*
+window.onload = function() {
+  document.getElementById('subby').onclick = function() {
+    console.log('click');
+  }
+}
+
+*/
+
